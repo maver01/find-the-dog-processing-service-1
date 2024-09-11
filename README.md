@@ -27,7 +27,7 @@ The custom function currently simply change turn the picture to black and white.
 
 ## Run the code
 
-Assuming, python and poetry are installed, run:
+Assuming python and poetry are installed, run:
 
 ```
 poetry run python kafka_consumer.py
