@@ -8,8 +8,12 @@ Main directory tree:
 
 ```
 ├── image_processing_service
-│   ├── image_processor.py
-│   ├── kafka_consumer.py
+│   ├── kafka_module
+│   │   └── kafka_handler.py
+│   ├── processing_module
+│   │   └── image_processor.py
+│   ├── processing_service.py
+
 ```
 
 This repository contains the code related to the microservice that processes the images sent from the server through a kafka stream. It does three main actions:
@@ -22,13 +26,14 @@ The custom function currently simply change turn the picture to black and white.
 
 ## Understand the code
 
-- image_processor: The module that handles the custom processing.
-- kafka_consumer: The module that handles reading from the first kafka stream and publishing to the second kafka stream.
+- kafka_module: The module that handles reading from the first kafka stream and publishing to the second kafka stream, and it's configuration.
+- processing_module: The module that handles the processing of the image.
+- processing_service.py: The module to run, that reads messages, processes them, and write them to the second kafka topic.
 
 ## Run the code
 
 Assuming python and poetry are installed, run:
 
 ```
-poetry run python kafka_consumer.py
+poetry run python processing_service.py
 ```
