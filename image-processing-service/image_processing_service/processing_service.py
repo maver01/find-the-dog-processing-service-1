@@ -1,6 +1,6 @@
 import logging
 from image_processing_service.kafka_module.kafka_handler import kafka_consumer, kafka_producer
-from image_processing_service.processing_service import process_image
+from image_processing_service.processing_module.image_processor import process_image
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
