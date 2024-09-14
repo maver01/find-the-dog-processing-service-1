@@ -8,15 +8,16 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logging.info('Started Kafka consumer')
 for message in kafka_consumer:
     try:
+        request_id = message.key  # Extract the UUID from the message key
         received_string = message.value  # This is received string
-        logging.info('Received image from Kafka topic')
-        
+        logging.info('Received image from Kafka topic with uuid: %s', request_id.decode('utf-8'))
+
         # Process the image bytes using the image processor
         processed_image = process_image(received_string)
         logging.info('Processed image')
         
         # Send the processed image back to Kafka
-        kafka_producer.send('image-output-topic', value=processed_image)
+        kafka_producer.send('image-output-topic', key=request_id, value=processed_image)
         logging.info('Sent processed image to Kafka topic')
         
     except Exception as e:
