@@ -1,6 +1,6 @@
 import logging
 from image_processing_service.kafka_module.kafka_handler import kafka_consumer, kafka_producer
-from image_processing_service.processing_module.image_processor import process_image
+from image_processing_service.processing_module.dog_detection_image_processor import process_image
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -13,12 +13,12 @@ for message in kafka_consumer:
         logging.info('Received image from Kafka topic with uuid: %s', request_id.decode('utf-8'))
 
         # Process the image bytes using the image processor
-        processed_image = process_image(received_string)
-        logging.info('Processed image')
-        
+        image_class_label_bytes = process_image(received_string)
+        logging.info('Processed image with image_class_label: %s', image_class_label_bytes.decode('utf-8'))
+
         # Send the processed image back to Kafka
-        kafka_producer.send('image-output-topic', key=request_id, value=processed_image)
-        logging.info('Sent processed image to Kafka topic')
+        kafka_producer.send('image-output-topic', key=request_id, value=image_class_label_bytes)
+        logging.info('Sent image_class_label to Kafka topic')
         
     except Exception as e:
         logging.error(f"Error processing message: {e}")
