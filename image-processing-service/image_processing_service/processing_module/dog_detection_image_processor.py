@@ -71,8 +71,8 @@ def process_image(image_bytes):
 
 # Example usage:
 # load iamge bytes from /home/maver02/Projects/Infrastructure_suite_project/Development/find-the-dog-project/processed_images/image_bytes
-with open("/home/maver02/Projects/Infrastructure_suite_project/Development/find-the-dog-project/processed_images/image_bytes", "rb") as file:
-    image_bytes = file.read()
+# with open("/home/maver02/Projects/Infrastructure_suite_project/Development/find-the-dog-project/processed_images/image_bytes", "rb") as file:
+#    image_bytes = file.read()
 
-processed_image = process_image(image_bytes)
+#processed_image = process_image(image_bytes)
 
