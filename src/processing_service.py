@@ -1,6 +1,6 @@
 import logging
-from image_processing_service.kafka_module.kafka_handler import kafka_consumer, kafka_producer
-from image_processing_service.processing_module.dog_detection_image_processor import process_image
+from kafka_module.kafka_handler import kafka_consumer, kafka_producer
+from processing_module.dog_detection_image_processor import process_image
 
 # Import the Prometheus client libraries
 from prometheus_client import start_http_server, Counter, Histogram, Gauge

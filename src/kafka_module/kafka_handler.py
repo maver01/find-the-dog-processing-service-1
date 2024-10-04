@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # Kafka Consumer Configuration
 kafka_consumer = KafkaConsumer(
     'image-processing-topic',
-    bootstrap_servers=['localhost:9092'],
+    bootstrap_servers=['kafka:9094'],
     auto_offset_reset='earliest',
     enable_auto_commit=True,
     value_deserializer=lambda x: x, # Receive raw bytes
@@ -15,6 +15,6 @@ kafka_consumer = KafkaConsumer(
 
 # Kafka Producer Configuration
 kafka_producer = KafkaProducer(
-    bootstrap_servers=['localhost:9092'],
+    bootstrap_servers=['kafka:9094'],
     value_serializer=lambda x: x,  # Send raw bytes
 )

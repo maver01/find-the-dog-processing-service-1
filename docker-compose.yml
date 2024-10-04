@@ -1,0 +1,11 @@
+services:
+  processing-service:
+    build: .
+    ports:
+      - "8000:8000"
+    networks:
+      - find_the_dog_network
+
+networks:
+    find_the_dog_network:
+      external: true
