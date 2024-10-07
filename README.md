@@ -37,3 +37,9 @@ Assuming python and poetry are installed, run:
 ```
 poetry run python processing_service.py
 ```
+
+
+Or use the docker container:
+```
+docker compose up
+```
